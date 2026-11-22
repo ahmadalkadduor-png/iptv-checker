@@ -19,7 +19,7 @@
       --accent-2: #22c55e;
       --danger: #ef4444;
       --warn: #f59e0b;
-      --border: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
       --radius: 14px;
       --video-ratio: auto;
       --video-fit: contain;
@@ -31,12 +31,12 @@
       --surface-2: #e9eff8;
       --text: #0f172a;
       --muted: #475569;
-      --border: rgba(15, 23, 42, 0.12);
+      --border: rgba(15, 23, 42, 0.14);
     }
     [data-style="glass"] {
-      --surface: rgba(23, 35, 64, 0.72);
-      --surface-2: rgba(34, 52, 92, 0.75);
-      --border: rgba(255, 255, 255, 0.18);
+      --surface: rgba(23, 35, 64, 0.8);
+      --surface-2: rgba(34, 52, 92, 0.85);
+      --border: rgba(255, 255, 255, 0.2);
     }
     [data-style="neon"] {
       --accent: #06b6d4;
@@ -61,7 +61,6 @@
     }
     body { padding-bottom: 58px; }
 
-    /* Top Header */
     .topbar {
       position: sticky;
       top: 0;
@@ -95,7 +94,6 @@
     .icon-btn.primary { background: var(--accent); color: #fff; border-color: transparent; }
     .icon-btn.active { outline: 2px solid var(--accent); }
 
-    /* Sidebar Drawer */
     .drawer-backdrop {
       position: fixed;
       inset: 0;
@@ -108,8 +106,8 @@
       position: fixed;
       top: 0;
       bottom: 58px;
-      width: 300px;
-      max-width: 86vw;
+      width: 305px;
+      max-width: 88vw;
       background: var(--surface);
       border-inline-end: 1px solid var(--border);
       z-index: 90;
@@ -155,6 +153,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      text-decoration: none;
     }
     .btn.accent { background: var(--accent); color: #fff; border-color: transparent; }
     .btn.warn { background: var(--warn); color: #111; border-color: transparent; }
@@ -162,7 +161,6 @@
     .btn.success { background: var(--accent-2); color: #fff; border-color: transparent; }
     .btn.sm { padding: 5px 8px; font-size: 0.78rem; }
 
-    /* Main Workspace */
     .main-layout {
       display: flex;
       flex-direction: column;
@@ -204,7 +202,7 @@
       flex-wrap: wrap;
     }
     .now-playing-txt {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       flex: 1;
       min-width: 120px;
@@ -213,7 +211,6 @@
       white-space: nowrap;
     }
 
-    /* Fullscreen Overlays */
     .fs-top-right {
       position: absolute;
       top: 12px;
@@ -241,7 +238,7 @@
       width: 260px;
       max-height: 70vh;
       overflow-y: auto;
-      background: rgba(15, 23, 42, 0.82);
+      background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
@@ -259,7 +256,7 @@
       color: #fff;
       cursor: pointer;
       text-align: start;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
       border: none;
     }
     .fs-ch-item.active { background: var(--accent); }
@@ -268,7 +265,7 @@
       position: fixed;
       bottom: 64px;
       inset-inline-start: 14px;
-      width: 260px;
+      width: 265px;
       max-height: 72vh;
       overflow-y: auto;
       background: var(--surface);
@@ -315,7 +312,6 @@
       cursor: pointer;
     }
 
-    /* Content Pane */
     .content-pane {
       padding: 10px;
       display: flex;
@@ -408,7 +404,6 @@
       text-shadow: 0 1px 2px rgba(0,0,0,0.8);
     }
 
-    /* Channels Container */
     .folder-channels-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -459,7 +454,6 @@
     .ch-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
     .ch-rank-input { width: 48px !important; padding: 4px 6px !important; font-size: 0.75rem !important; text-align: center; }
 
-    /* Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -497,7 +491,6 @@
     }
     .style-card.active { border-color: var(--accent); outline: 2px solid var(--accent); }
 
-    /* Bottom Banner Slot */
     .ad-banner-footer {
       position: fixed;
       bottom: 0;
@@ -514,7 +507,6 @@
       color: var(--muted);
     }
 
-    /* Landscape Split Layout (65% Video Left / 35% Content Right) */
     @media (orientation: landscape) and (max-height: 600px) {
       .main-layout {
         flex-direction: row;
@@ -616,9 +608,9 @@
 
       <div id="foldersGrid" class="folders-grid"></div>
 
-      <div id="folderChannelsBox" class="folder-channels-box">
+      <div id="folderChannelsBox" class="folder-channels-box open">
         <div class="section-head">
-          <strong id="activeFolderLabel"></strong>
+          <strong id="activeFolderLabel">General</strong>
           <div style="display:flex; gap:6px;">
             <button id="btnClearHistory" class="btn danger sm" style="display:none;" data-i18n="clearHistory">Clear History</button>
             <button id="btnCloseFolderBox" class="btn sm">✕</button>
@@ -760,7 +752,8 @@
         mostWatchedFolder: "Most Watched",
         recentFolder: "Recently Watched",
         customFoldersLabel: "Custom Folders",
-        parentalFolder: "Parental Control"
+        parentalFolder: "Parental Control",
+        channelsCount: "channels"
       },
       ar: {
         addSourceTitle: "إضافة رابط IPTV أو بث",
@@ -799,7 +792,8 @@
         mostWatchedFolder: "الأكثر مشاهدة",
         recentFolder: "المشاهدة مؤخراً",
         customFoldersLabel: "المجلدات المخصصة",
-        parentalFolder: "الرقابة الأبوية"
+        parentalFolder: "الرقابة الأبوية",
+        channelsCount: "قنوات"
       },
       tr: {
         addSourceTitle: "IPTV URL / Yayın Ekle",
@@ -838,16 +832,18 @@
         mostWatchedFolder: "En Çok İzlenen",
         recentFolder: "Son İzlenen",
         customFoldersLabel: "Özel Klasörler",
-        parentalFolder: "Ebeveyn Kontrolü"
+        parentalFolder: "Ebeveyn Kontrolü",
+        channelsCount: "kanal"
       }
     };
 
-    const STORAGE_KEY = "elkadur_iptv_checker_v1";
+    const STORAGE_KEY = "elkadur_iptv_checker_v3";
 
     const DEFAULT_CHANNELS = [
       { id: "ch-1", name: "Sample HLS Stream 1", url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8", group: "General" },
       { id: "ch-2", name: "Sample HLS Stream 2", url: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8", group: "Movies" },
-      { id: "ch-3", name: "Sample HLS Stream 3", url: "https://mnmedias.api.telequebec.tv/m3u8/44/68/44680982297049218495050473977355.m3u8", group: "News" }
+      { id: "ch-3", name: "Sample HLS Stream 3", url: "https://mnmedias.api.telequebec.tv/m3u8/44/68/44680982297049218495050473977355.m3u8", group: "News" },
+      { id: "ch-4", name: "Sample Sports Stream", url: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8", group: "Sports" }
     ];
 
     let state = {
@@ -868,7 +864,7 @@
       watchCounts: {},
       recentIds: [],
       lastChannelId: null,
-      activeFolderKey: "all",
+      activeFolderKey: "group:General",
       selectedQuality: "auto",
       selectedAspect: "auto",
       screenLocked: false
@@ -1108,7 +1104,7 @@
 
         const top = document.createElement("div");
         top.className = "folder-top";
-        top.innerHTML = `<div><div class="folder-name">${grp}</div><div class="folder-count">${count}</div></div>`;
+        top.innerHTML = `<div><div class="folder-name">${grp}</div><div class="folder-count">${count} ${t("channelsCount")}</div></div>`;
         top.onclick = () => openFolderView(key, grp);
 
         const scanBtn = document.createElement("button");
@@ -1146,7 +1142,7 @@
       const rawList = getChannelsForKey(key);
       const list = getSortedChannels(rawList);
 
-      list.forEach((ch, idx) => {
+      list.forEach((ch) => {
         const row = document.createElement("div");
         row.className = "channel-row";
 
@@ -1345,12 +1341,12 @@
       renderSavedPlaylists();
       renderFsOptions();
       updateFavIcon(state.lastChannelId);
-      if (document.getElementById("folderChannelsBox").classList.contains("open")) {
+      const box = document.getElementById("folderChannelsBox");
+      if (box.classList.contains("open")) {
         renderChannelsInFolder(state.activeFolderKey);
       }
     }
 
-    // Event Wiring
     const drawer = document.getElementById("sidebarDrawer");
     const backdrop = document.getElementById("drawerBackdrop");
     document.getElementById("btnMenu").onclick = () => {
@@ -1483,7 +1479,6 @@
       }
     };
 
-    // Fullscreen & Lock
     const stage = document.getElementById("videoStage");
     document.getElementById("btnFullscreen").onclick = () => {
       if (!document.fullscreenElement && stage.requestFullscreen) {
@@ -1574,7 +1569,6 @@
       }
     };
 
-    // Settings
     const settingsModal = document.getElementById("settingsModal");
     document.getElementById("btnOpenSettings").onclick = () => settingsModal.classList.add("open");
     document.getElementById("btnCloseSettings").onclick = () => settingsModal.classList.remove("open");

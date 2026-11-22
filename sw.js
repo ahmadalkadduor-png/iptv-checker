@@ -1,4 +1,4 @@
-const CACHE_NAME = "elkadur-iptv-checker-v1";
+const CACHE_NAME = "elkadur-iptv-checker-v3";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./privacy-policy.html"];
 
 self.addEventListener("install", (event) => {
