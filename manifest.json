@@ -1,0 +1,19 @@
+{
+  "name": "IPTV Reader & Checker",
+  "short_name": "IPTV Checker",
+  "description": "Smart IPTV & M3U player with link checker, auto-folders, and parental lock by ELKADUR SOFTWARE.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='36' fill='%230b1020'/%3E%3Cpolygon points='72,56 144,96 72,136' fill='%233b82f6'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
